@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  rclone-ultra:
+    build: .
+    image: rclone-ultra:latest
+    container_name: rclone-ultra
+    restart: "no"
+
+    volumes:
+      - /volume1/docker/rclone/config:/config:ro
+      - /volume1/docker/rclone/scripts:/scripts:ro
+      - /volume1/docker/rclone/logs:/logs
+      - /volume1/Video:/data
+
+    environment:
+      - TZ=Europe/London
+
+    entrypoint: ["/bin/sh", "/scripts/rclone_ultra.sh"]

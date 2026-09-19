@@ -1,0 +1,12 @@
+
+
+services:
+  ultra-requester:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ultra-requester
+    environment:
+      - AUTH_TOKEN=${AUTH_TOKEN}
+      - SLACK_WEBHOOK_URL=${SLACK_WEBHOOK_URL}
+    restart: unless-stopped
